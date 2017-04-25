@@ -1,0 +1,18 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.buttons {
+  height: 100px;
+  width: 100px;
+  border: 1px solid lightgreen;
+  float: left;
+  text-align: center;
+  font-size: 5em;
+}
+
+.row {
+  clear:left;
+}

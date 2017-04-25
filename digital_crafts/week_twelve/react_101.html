@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Babel Quickstart</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel" data-presets="react">
+
+    class MyThing extends React.Component{
+      render() {
+        return <div>Hello, world!</div>;
+      }
+    }
+
+    class Hello extends React.Component{
+      render() {
+        return <h1>Hello, {this.props.name}!</h1>;
+      }
+    }
+
+    class BSButton extends React.Component{
+      render(){
+        let classNames = ['btn'];
+        if (this.props.type) {
+          classNames.push('btn-' + this.props.type);
+        }
+        if (this.props.size) {
+          classNames.push('btn-' + this.props.size);
+        }
+        return (
+          <button className={classNames.join(' ')}>
+            {this.props.children}
+          </button>
+        );
+      }
+    }
+
+    class BSForm extends React.Component {
+      render(){
+        return(
+          <div className="form-group">
+          <label>{this.props.labelInput}</label>
+          <input type="text" name={this.props.nameInput}/>
+          </div>
+        )
+      }
+    }
+
+    ReactDOM.render(
+      <form>
+        <BSForm labelInput="What is your name?" nameInput="name"/>
+        <BSForm labelInput="What is your favorite color?" nameInput="color"/>
+        <BSForm labelInput="If you were an animal, what animal would you be?" nameInput="animal"/>
+        <BSButton type="default">Submit</BSButton>
+      </form>
+        , document.getElementById('root'));
+
+    </script>
+
+
+  </body>
+</html>
