@@ -69,24 +69,35 @@ class AddContact extends React.Component{
           <option value="work">Work</option>
           <option value="other">Other</option>
         </select>
-        </div>
         <button onClick={() => this.submitForm()}>Add Contact</button>
+        </div>
+
         <ul>
         {this.state.contactArray.map((item, idx) =>
-          <li>
-          <br/>
-          <label>Name: {item.name}</label><br/>
-          <label>Num: {item.number}</label><br/>
-          <label>Email: {item.email}</label><br/>
-          <label>Type: {item.type}</label><br/>
-          <button onClick={() => this.deleteContact(idx)}>Delete</button>
-          </li>
+          <ListContacts key={idx} item={item} deleteContact={() => this.deleteContact(idx)}/>
         )}
         </ul>
       </div>
     );
   }
 }
+
+class ListContacts extends React.Component{
+  render() {
+    return (
+      <li>
+      <br/>
+      <label>Name: {this.props.item.name}</label><br/>
+      <label>Num: {this.props.item.number}</label><br/>
+      <label>Email: {this.props.item.email}</label><br/>
+      <label>Type: {this.props.item.type}</label><br/>
+      <button onClick={this.props.deleteContact}>Delete</button>
+      </li>
+    )
+  }
+}
+
+
 
 ReactDOM.render(
   <AddContact/>,
